@@ -1,18 +1,18 @@
 import { useEffect, useState } from "react"
 
-export default function PlayerScreen({playerid}:{playerid: number}){
-    
-    console.log('player screen ',playerid)
+export default function PlayerScreen({ playerid }: { playerid: number }) {
+
+    console.log('player screen ', playerid)
     const [boxes, setBoxes] = useState<{ key: number; value: number; checked: boolean; userid: string }[]>([]);
 
-    useEffect(()=>{
+    useEffect(() => {
         console.log('calling effext')
-        
+
         fetchData(playerid);
-    },[playerid])
+    }, [playerid])
 
 
-    const fetchData = async (playerid:number)=>{
+    const fetchData = async (playerid: number) => {
         try {
             const response = await fetch(`http://localhost:8080/api/getbyuserid?playerid=${playerid}`, {
                 method: 'GET',
@@ -33,13 +33,13 @@ export default function PlayerScreen({playerid}:{playerid: number}){
                 console.log('error page')
             }
         } catch (error) {
-            console.log('getting error ',error)
+            console.log('getting error ', error)
         }
     }
 
     return (<>
-    
-    <div className="grid grid-cols-9 gap-2 max-w-2xl mb-5 ">
+        <div className="mx-auto mt-16 max-w-xl sm:mt-20">
+            <div className="grid grid-cols-9 gap-2 max-w-2xl mb-5 ">
                 {boxes.map((box) => (
                     <div
                         key={box.key}
@@ -52,6 +52,6 @@ export default function PlayerScreen({playerid}:{playerid: number}){
                     </div>
                 ))}
             </div>
-
+        </div>
     </>)
 }

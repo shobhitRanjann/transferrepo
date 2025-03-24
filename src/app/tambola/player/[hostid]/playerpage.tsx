@@ -12,7 +12,7 @@ export default function Playerpage({ hostid }: { hostid: string }) {
         const totalBoxes = 27;
         const numbersPerRow = 5; // Each row (9 values) must have 5 numbers
         const min = 1;
-        const max = 80;
+        const max = 90;
 
         const randomValues = new Set<number>();
 
@@ -265,7 +265,7 @@ export default function Playerpage({ hostid }: { hostid: string }) {
         Your Id :  {userids}
 
 
-        <div>
+        <div className="mx-auto mt-16 max-w-xl sm:mt-20">
             {idStatus === 'success' ? <>
                 <h2>Generated Values</h2>
 
