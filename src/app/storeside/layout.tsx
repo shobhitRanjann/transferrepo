@@ -1,8 +1,13 @@
 import type { Metadata } from "next";
-import { Inter, Roboto_Mono } from 'next/font/google'
-import "./globals.css";
+import { Inter, Roboto_Mono } from "next/font/google";
+import "../globals.css";
+import Footer from "./footer/footer";
+import {CartProvider} from './content/CartContext'
+import Navbar from "./frontnav/navbar";
 
 
+
+ 
 const inter = Inter({
   subsets: ['latin'],
   variable: '--font-inter',
@@ -14,6 +19,7 @@ const roboto_mono = Roboto_Mono({
   variable: '--font-roboto-mono',
   display: 'swap',
 })
+ 
 
 export const metadata: Metadata = {
   title: "SmallStore",
@@ -27,15 +33,13 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en" className={`${inter.variable} ${roboto_mono.variable}`}>
-     
-      <body>  
-     
-      {/* className={`${geistSans.variable} ${geistMono.variable} antialiased  bg-white dark:bg-gray-900`}  */}
-        {/* <CartProvider>
-          <Navbar/> */}
+    
+      <body >
+        <CartProvider>
+          <Navbar/>
         {children}
-        {/* <Footer/>
-        </CartProvider> */}
+        <Footer/>
+        </CartProvider>
       </body>
     </html>
   );
