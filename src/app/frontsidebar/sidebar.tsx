@@ -99,7 +99,7 @@ export default function SidebarFrontPage() {
 
       {/* Main Content */}
       <div className={`flex-1 p-4 lg:ml-64 transition-all duration-300 ease-in-out ${isOpen && window.innerWidth < 1024 ? 'blur-sm' : ''}`}>
-        <div className='mt-9'>
+        <div className='mt-11'>
           {/* Dynamic Page Content */}
           {activetab === 'Dashboard' && <Dashboard/>}
           {activetab === "Youtube View Increaser" && <IncreaseViews/>}
