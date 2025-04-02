@@ -1,9 +1,53 @@
 import Image from "next/legacy/image";
 import Link from "next/link";
-import { useEffect } from "react";
+
+interface BlogImage {
+  imageUrl: string;
+  imageOrder: number;
+}
+
+interface Tag {
+  id: string;
+  name: string;
+}
+
+interface BlogData {
+  id: string;
+  blogTitle: string;
+  slug: string;
+  blogContent: string;
+  blogImages: BlogImage[];
+  tags: Tag[];
+  status: string;
+  createDate: Date;
+  updateDate: Date;
+  createdBy: string;
+  viewCount: number;
+  likeCount: number;
+}
 
 // { cardid, title, description, image, date }: { cardid: string, title: string, description: string, image: string, date: string }
-export default function Card(props: any) {
+export default function Card(props: BlogData) {
+  
+
+  function dateformatter(dateval: string){
+    const inputDate = dateval;
+    const date = new Date(inputDate);
+    
+    // Format the date in the desired format
+    const formattedDate = date.toLocaleString('en-US', {
+      weekday: 'long', // Optional: weekday name
+      year: 'numeric',
+      month: 'long',
+      day: 'numeric',
+      hour: 'numeric',
+      minute: 'numeric',
+      second: 'numeric',
+      hour12: true, // Use 12-hour clock (AM/PM)
+    });
+
+    return formattedDate;
+  }
   
   return (
     <>
@@ -26,7 +70,7 @@ export default function Card(props: any) {
               ''
             )}
           </p>
-          <p className="text-gray-400 dark:text-gray-200 text-sm mt-2">{props.createDate}</p>
+          <p className="text-gray-400 dark:text-gray-200 text-sm mt-2">{dateformatter(props.createDate.toString())}</p>
         </div>
       </div>
     </>
